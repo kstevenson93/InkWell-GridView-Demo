@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Trail {
   final String title;
-  final Icon icon;
+  final Image image;
   
-  Trail(this.title, this.icon);
+  Trail(this.title, this.image);
 }

@@ -15,7 +15,7 @@ class TrailDetails extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: trail.icon,
+          child: trail.image,
         ),
       ),
     );

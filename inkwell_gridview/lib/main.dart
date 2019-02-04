@@ -30,10 +30,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //Create a list of objects to display on page
   final trails = List<Trail>.generate(
-    10,
+    4,
     (i) => Trail(
-          'Trail $i',
-          Icon(Icons.train),
+          'Trail ${i + 1}',
+          new Image.asset(
+            'assets/img/125.png',
+            fit: BoxFit.cover,
+          ),
         ),
   );
 
@@ -68,35 +71,36 @@ class _MyHomePageState extends State<MyHomePage> {
               shape: CircleBorder(),
               //InkWell is a custom shaped widget that can function as a button
               child: InkWell(
-                  highlightColor: Colors.orangeAccent.withOpacity(0.2),
-                  splashColor: Colors.yellow[400],
-                  radius: 35.0,
-                  borderRadius: BorderRadius.circular(180),
-                  onTap: () {
-                    setState(() {});
-                    //Pushes selected trail to trail_details.dart, based on the index of the inkwell that was pushed
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TrailDetails(
-                              trail: trails[index],
-                            ),
-                      ),
-                    );
-                  },
-                  //Column() holds the data at each index inside of the InkWell
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    verticalDirection: VerticalDirection.down,
-                    children: <Widget>[
-                      Text(
-                        trails[index].title,
-                        textScaleFactor: 2.0,
-                      ),
-                      trails[index].icon,
-                    ],
-                  )),
+                highlightColor: Colors.orangeAccent.withOpacity(0.2),
+                splashColor: Colors.yellow[400],
+                radius: 25.0,
+                borderRadius: BorderRadius.circular(180),
+                onTap: () {
+                  setState(() {});
+                  //Pushes selected trail to trail_details.dart, based on the index of the inkwell that was pushed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TrailDetails(
+                            trail: trails[index],
+                          ),
+                    ),
+                  );
+                },
+                //Column() holds the data at each index inside of the InkWell
+                child: Stack(
+                  fit: StackFit.loose,
+                  overflow: Overflow.clip,
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    trails[index].image,
+                    Text(
+                      trails[index].title,
+                      textScaleFactor: 2.0,
+                    ),
+                  ],
+                ),
+              ),
             );
           })),
     );
