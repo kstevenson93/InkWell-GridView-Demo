@@ -93,7 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   overflow: Overflow.clip,
                   alignment: Alignment.center,
                   children: <Widget>[
-                    trails[index].image,
+                    CircleAvatar(
+                      radius: 25.0,
+                      child: trails[index].image,
+                    ),
                     Text(
                       trails[index].title,
                       textScaleFactor: 2.0,
